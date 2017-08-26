@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidWebviewInputFile.iml" filepath="$PROJECT_DIR$/AndroidWebviewInputFile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidWebviewInputFile.iml" filepath="$PROJECT_DIR$/AndroidWebviewInputFile.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webchromeclient/webchromeclient.iml" filepath="$PROJECT_DIR$/webchromeclient/webchromeclient.iml" />
       <module fileurl="file://$PROJECT_DIR$/webchromeclient/webchromeclient.iml" filepath="$PROJECT_DIR$/webchromeclient/webchromeclient.iml" />
     </modules>
   </component>
