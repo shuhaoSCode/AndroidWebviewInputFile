@@ -13,60 +13,51 @@ public class FileChooserWebChromeClient extends WebChromeClient {
     static class FileChooserWebChromeClientBuild{
         UploadMessage uploadMessage;
         ActivityCallBack callBack;
-        FileChooserWebChromeClientBuild(ActivityCallBack callBack,UploadMessage uploadMessage){
+        FileChooserWebChromeClientBuild(ActivityCallBack callBack){
+            this.uploadMessage = new UploadMessage();
             this.callBack = callBack;
-            this.uploadMessage = uploadMessage;
         }
         public FileChooserWebChromeClient build(){
-            return new FileChooserWebChromeClient(callBack,uploadMessage);
+            return new FileChooserWebChromeClient(this);
         }
     }
-    public static FileChooserWebChromeClient createBuild(ActivityCallBack callBack,UploadMessage uploadMessage){
-        return new FileChooserWebChromeClientBuild(callBack,uploadMessage).build();
+    public static FileChooserWebChromeClient createBuild(ActivityCallBack callBack){
+        return new FileChooserWebChromeClientBuild(callBack).build();
     }
-    public static final int REQUEST_CAMERA_PERMISSION = 1;
-    public static final int INPUT_FILE_REQUEST_CODE = 2;
-    private FileChooserWebChromeClient(){
-        uploadMessage = new UploadMessage();
+    FileChooserWebChromeClientBuild build;
+    private FileChooserWebChromeClient(FileChooserWebChromeClientBuild build){
+        this.build = build;
     }
-    private FileChooserWebChromeClient(ActivityCallBack callBack,UploadMessage uploadMessage){
-        this.uploadMessage = uploadMessage;
-        setActivityCallBack(callBack);
-    }
-    UploadMessage uploadMessage;
-    public void setActivityCallBack(ActivityCallBack callBack){
-        this.callBack = callBack;
-    }
-    private ActivityCallBack callBack;
+
     public interface ActivityCallBack{
         void FileChooserBack(Intent intent);
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
-        uploadMessage.setUploadMessageAboveL(filePathCallback);
-        callBack.FileChooserBack(uploadMessage.openImageChooserActivity(fileChooserParams.getAcceptTypes()));
+        build.uploadMessage.setUploadMessageAboveL(filePathCallback);
+        build.callBack.FileChooserBack(build.uploadMessage.openImageChooserActivity(fileChooserParams.getAcceptTypes()));
         return true;
     }
     public void openFileChooser(ValueCallback<Uri> valueCallback) {
         //uploadMessage = valueCallback;
-        uploadMessage.setUploadMessage(valueCallback);
-        callBack.FileChooserBack (uploadMessage.openImageChooserActivity("image/*"));
+        build.uploadMessage.setUploadMessage(valueCallback);
+        build.callBack.FileChooserBack (build.uploadMessage.openImageChooserActivity("image/*"));
     }
 
     // For Android  >= 3.0
     public void openFileChooser(ValueCallback valueCallback, String acceptType) {
-        uploadMessage.setUploadMessage(valueCallback);
-        callBack.FileChooserBack(uploadMessage.openImageChooserActivity(acceptType));
+        build.uploadMessage.setUploadMessage(valueCallback);
+        build.callBack.FileChooserBack(build.uploadMessage.openImageChooserActivity(acceptType));
     }
 
     //For Android  >= 4.1
     public void openFileChooser(ValueCallback<Uri> valueCallback, String acceptType, String capture) {
-        uploadMessage.setUploadMessage(valueCallback);
-        callBack.FileChooserBack(uploadMessage.openImageChooserActivity(acceptType));
+        build.uploadMessage.setUploadMessage(valueCallback);
+        build.callBack.FileChooserBack(build.uploadMessage.openImageChooserActivity(acceptType));
     }
 
     public UploadMessage getUploadMessage(){
-        return uploadMessage;
+        return build.uploadMessage;
     }
 }
