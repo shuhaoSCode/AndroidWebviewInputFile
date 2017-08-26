@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.shuhao.webchromeclient.FileChooserWebChromeClient;
-import com.shuhao.webchromeclient.UploadMessage;
 
 import static com.shuhao.webchromeclient.UploadMessage.FILE_CHOOSER_RESULT_CODE;
 
@@ -21,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
             public void FileChooserBack(Intent intent) {
                 startActivityForResult(intent, FILE_CHOOSER_RESULT_CODE);
             }
-        },new UploadMessage());
+        });
 
     }
 
