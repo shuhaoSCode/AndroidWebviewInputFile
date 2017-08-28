@@ -36,8 +36,8 @@
                 startActivityForResult(intent, FILE_CHOOSER_RESULT_CODE);
             }
         });
-	//设置到自己的webview
-	webview.setWebChromeClient(webChromeClient);
+		//设置到自己的webview
+		webview.setWebChromeClient(webChromeClient);
     }
 
     @Override
