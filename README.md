@@ -23,39 +23,27 @@
 * 让webview支持<input type="file" >
 
 ## 如何使用
-	//已经写好的WebChromeClient
-	FileChooserWebChromeClient webChromeClient;
+	//初始化
+	FileChooserWebChromeClient fileChooserWebChromeClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //创建FileChooserWebChromeClient
-        webChromeClient = new FileChooserWebChromeClient();
-        //设置到自己的webview
-        webview.setWebChromeClient(webChromeClient);
-    }
-    
-    //下面两个直接copy到代码中就好
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        switch (requestCode) {
-            case FileChooserWebChromeClient.INPUT_FILE_REQUEST_CODE:
-                webChromeClient.cleanUpOnBackFromFileChooser(this, resultCode, intent);
-            default:
-                Log.d("", "requestCode:" + requestCode + ", resultCode:" + resultCode);
-        }
+        
+        fileChooserWebChromeClient = FileChooserWebChromeClient.createBuild(new FileChooserWebChromeClient.ActivityCallBack() {
+            @Override
+            public void FileChooserBack(Intent intent) {
+                startActivityForResult(intent, FILE_CHOOSER_RESULT_CODE);
+            }
+        });
+		//设置到自己的webview
+		webview.setWebChromeClient(webChromeClient);
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case FileChooserWebChromeClient.REQUEST_CAMERA_PERMISSION: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    webChromeClient.openCameraGalleryChooser(this);
-                    return;
-                }
-                webChromeClient.callOnReceiveValue(null);
-            }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == FILE_CHOOSER_RESULT_CODE) {
+            fileChooserWebChromeClient.getUploadMessage().onActivityResult(requestCode,resultCode,data);
         }
     }
