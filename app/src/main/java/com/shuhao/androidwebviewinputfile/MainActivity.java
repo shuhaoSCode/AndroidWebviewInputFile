@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == FILE_CHOOSER_RESULT_CODE) {
+        if (requestCode == FILE_CHOOSER_RESULT_CODE) {
             fileChooserWebChromeClient.getUploadMessage().onActivityResult(requestCode,resultCode,data);
         }
     }
