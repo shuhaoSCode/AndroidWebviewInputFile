@@ -13,7 +13,7 @@
 		}
 		  
 		dependencies {
-	       compile 'com.github.shuhaoSCode:AndroidWebviewInputFile:1.0.0'
+	       compile 'com.github.shuhaoSCode:AndroidWebviewInputFile:1.0.0'
 		}
 
 
