@@ -1,4 +1,4 @@
-# AndroidWebviewInputFile
+# AndroidWebviewInputFile(´･ω･`)
 解决在webview中input标签type="file"不能使用的问题
 
 ## 如何导入？	[![](https://jitpack.io/v/shuhaoSCode/AndroidUIImageView.svg)](https://jitpack.io/#shuhaoSCode/AndroidUIImageView)
@@ -23,7 +23,7 @@
 ## 当前功能
 * 让webview支持<input type="file" >
 
-## 如何使用 (给个star吧亲🤕)
+## 如何使用
 	//初始化
 	FileChooserWebChromeClient fileChooserWebChromeClient;
     @Override
@@ -47,4 +47,5 @@
         if (requestCode == FILE_CHOOSER_RESULT_CODE) {
             fileChooserWebChromeClient.getUploadMessage().onActivityResult(requestCode,resultCode,data);
         }
-    }
+    }
+###(跪求star_(:з」∠)_)
