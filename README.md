@@ -23,7 +23,7 @@
 ## 当前功能
 * 让webview支持<input type="file" >
 
-## 如何使用
+## 如何使用 (给个星星吧亲(づ￣3￣)づ╭❤～)
 	//初始化
 	FileChooserWebChromeClient fileChooserWebChromeClient;
     @Override
