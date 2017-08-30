@@ -1,7 +1,8 @@
 # AndroidWebviewInputFile
 解决在webview中input标签type="file"不能使用的问题
 
-## 如何导入？
+## 如何导入？	[![](https://jitpack.io/v/shuhaoSCode/AndroidUIImageView.svg)](https://jitpack.io/#shuhaoSCode/AndroidUIImageView)
+
 
 * Android Studio
 
